@@ -51,7 +51,8 @@ public class Auction {
     private Integer sellerId;
     @Enumerated(EnumType.STRING)
     private AUCTION_STATUS status;
-
+    @Version
+    private int version;
     @PrePersist
     public void setDefaults(){
         if(status==null){

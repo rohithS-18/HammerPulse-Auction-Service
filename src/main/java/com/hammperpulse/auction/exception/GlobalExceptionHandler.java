@@ -42,7 +42,7 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(rnfe.getMessage());
     }
 
-    @ExceptionHandler(IllegalStateException.class)
+    @ExceptionHandler(java.lang.IllegalStateException.class)
     public ResponseEntity<?> handleIllegalStateException(IllegalStateException ise){
         return ResponseEntity.status(HttpStatus.CONFLICT).body(ise.getMessage());
     }
