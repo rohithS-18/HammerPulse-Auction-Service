@@ -10,8 +10,13 @@ public class AuctionScheduler {
     @Autowired
     private AuctionService auctionService;
 
-    @Scheduled(fixedDelay = 5000)
+    @Scheduled(fixedDelay = 500000)
     public void pollAuctionToStart(){
         auctionService.StartEligibleAuctions();
+    }
+
+    @Scheduled(fixedDelay = 50000)
+    public void pollAuctionToEnd(){
+        auctionService.endEligibleAuctions();
     }
 }

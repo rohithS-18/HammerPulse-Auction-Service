@@ -15,5 +15,5 @@ public class AuctionEndedEvent {
     private LocalDateTime endTime;
     private String result;
     private String winnerName;
-    private BigDecimal winningPrice;
+    private int winningPrice;
 }

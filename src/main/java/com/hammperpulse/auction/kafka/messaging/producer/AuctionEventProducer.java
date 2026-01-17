@@ -49,7 +49,7 @@ public class AuctionEventProducer {
         kafkaTemplate.send("auction-events",event);
     }
 
-    public void publishAuctionEnded(Auction auction, String result,String winnerName, BigDecimal winningPrice){
+    public void publishAuctionEnded(Auction auction, String result,String winnerName, int winningPrice){
         AuctionEndedEvent auctionEndedEvent=eventMapper.toEndEvent(auction);
         auctionEndedEvent.setResult(result);
         auctionEndedEvent.setWinnerName(winnerName);

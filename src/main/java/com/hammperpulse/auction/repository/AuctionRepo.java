@@ -2,6 +2,7 @@ package com.hammperpulse.auction.repository;
 
 import com.hammperpulse.auction.entity.Auction;
 import com.hammperpulse.auction.enums.AUCTION_STATUS;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.RepositoryDefinition;
 import org.springframework.data.repository.query.Param;
@@ -21,4 +22,5 @@ public interface AuctionRepo {
     List<Auction> findBySellerId(int id);
 
     List<Auction> findByStartTimeBeforeAndStatus(LocalDateTime time,AUCTION_STATUS status);
+
 }
