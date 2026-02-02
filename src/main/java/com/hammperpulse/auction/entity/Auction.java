@@ -51,6 +51,12 @@ public class Auction {
     private Integer sellerId;
     @Enumerated(EnumType.STRING)
     private AUCTION_STATUS status;
+    @Column(name = "winner_id")
+    private int winnerId;
+    @Column(name = "winning_amount")
+    private double winningPrice;
+    @Column(name = "final_status")
+    private String finalStatus;
     @Version
     private int version;
     @PrePersist

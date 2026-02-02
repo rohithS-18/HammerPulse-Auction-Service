@@ -3,6 +3,7 @@ package com.hammperpulse.auction.dto;
 import com.hammperpulse.auction.annotations.ValidEndTime;
 import com.hammperpulse.auction.annotations.ValidUser;
 import com.hammperpulse.auction.enums.AUCTION_STATUS;
+import jakarta.persistence.Column;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.PrePersist;
@@ -33,6 +34,7 @@ public class AuctionDto {
     private Integer sellerId;
     @Enumerated(EnumType.STRING)
     private AUCTION_STATUS status;
-
-
+    private int winnerId;
+    private double winningPrice;
+    private String finalStatus;
 }

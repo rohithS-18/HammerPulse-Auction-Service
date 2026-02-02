@@ -49,10 +49,10 @@ public class AuctionEventProducer {
         kafkaTemplate.send("auction-events",event);
     }
 
-    public void publishAuctionEnded(Auction auction, String result,String winnerName, int winningPrice){
+    public void publishAuctionEnded(Auction auction, String result,int winnerId, double winningPrice){
         AuctionEndedEvent auctionEndedEvent=eventMapper.toEndEvent(auction);
         auctionEndedEvent.setResult(result);
-        auctionEndedEvent.setWinnerName(winnerName);
+        auctionEndedEvent.setWinnerName(winnerId);
         auctionEndedEvent.setWinningPrice(winningPrice);
         EventEnvelope event=createEnvelope("AUCTION_ENDED",auctionEndedEvent);
         kafkaTemplate.send("auction-events",event);
@@ -62,7 +62,7 @@ public class AuctionEventProducer {
         JsonNode node = mapper.readTree(reason);
         AuctionCancelledEvent auctionCancelledEvent=eventMapper.toCancelEvent(auction);
         auctionCancelledEvent.setReason(node.get("reason").asText());
-        EventEnvelope event=createEnvelope("AUCTION_STARTED",auctionCancelledEvent);
+        EventEnvelope event=createEnvelope("AUCTION_CANCELLED",auctionCancelledEvent);
         kafkaTemplate.send("auction-events",event);
     }
 
