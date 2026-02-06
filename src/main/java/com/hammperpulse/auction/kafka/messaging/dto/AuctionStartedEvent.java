@@ -4,6 +4,7 @@ package com.hammperpulse.auction.kafka.messaging.dto;
 import com.hammperpulse.auction.enums.AUCTION_STATUS;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -11,6 +12,7 @@ import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class AuctionStartedEvent {
     private int auctionId;
     private int sellerId;

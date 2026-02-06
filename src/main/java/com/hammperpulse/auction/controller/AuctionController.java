@@ -4,12 +4,14 @@ import com.hammperpulse.auction.dto.AuctionDto;
 import com.hammperpulse.auction.kafka.messaging.producer.AuctionEventProducer;
 import com.hammperpulse.auction.service.AuctionService;
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Slf4j
 @RestController
 public class AuctionController {
     @Autowired
@@ -41,6 +43,13 @@ public class AuctionController {
     @GetMapping("/user/{userId}/auctions")
     public ResponseEntity<List<AuctionDto>> getAuctionByUser(@PathVariable("userId") int id){
         return ResponseEntity.ok(auctionService.getAuctionByUser(id));
+    }
+
+    @GetMapping("/test/publish/{type}")
+    public ResponseEntity<?> testpublishStart(@PathVariable("type") String type){
+        log.info("Received request to publish for type "+type+" "+(type instanceof String));
+        producerService.publishDummy(type);
+        return ResponseEntity.ok().body("Done");
     }
 
     @GetMapping("/test")
